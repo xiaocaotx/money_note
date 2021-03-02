@@ -1,7 +1,9 @@
 <template>
-<div>我是labels页面
-  <my-nav/>
-</div>
+  <div class="mynav-wrapper">
+    <div class="content">我是labels页面
+    </div>
+    <my-nav/>
+  </div>
 </template>
 
 <script lang = "ts">
@@ -13,5 +15,16 @@ name: "Labels",
 </script >
 
 <style lang = 'scss' scoped>
+.mynav-wrapper {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
+.content {
+  border: 1px solid blue;
+  overflow: auto;
+  flex-grow: 1; //尽量占取高度，剩下的给导航栏。
+}
 </style>
