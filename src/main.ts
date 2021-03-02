@@ -4,11 +4,11 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import MyNav from '@/components/MyNav.vue';
-
+import Layout from '@/components/Layout.vue';
 Vue.config.productionTip = false
 
 Vue.component("MyNav",MyNav);
-
+Vue.component("Layout",Layout);
 
 
 new Vue({
