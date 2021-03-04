@@ -1,5 +1,5 @@
 <template>
-  <div class="mynav">
+  <my-nav >
     <router-link to = "/money">
       <svg>
         <use xlink:href="#money"></use>
@@ -9,12 +9,17 @@
     <router-link to = "/labels">标签</router-link>
     |
     <router-link to = "/statistics">统计</router-link>
-  </div>
+  </my-nav>
 </template>
 
 <script lang = "ts">
-import x from '@/assets/icons/money.svg';
-console.log(x)
+//一次性引入icons下的svg文件，这种方式就可以一次引入多个文件
+const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>requireContext.keys().forEach(requireContext);
+try {
+  importAll(require.context('../assets/icons',true,/\.svg$/))
+}catch (error){
+  console.log(error)
+}
 
 export default {
 name: "MyNav"
@@ -23,9 +28,6 @@ name: "MyNav"
 
 <style lang = 'scss' scoped >
 
-.mynav{
-  border: 1px solid red;
 
-}
 
 </style>
