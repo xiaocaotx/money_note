@@ -1,33 +1,53 @@
 <template>
-  <my-nav >
-    <router-link to = "/money">
-      <svg>
-        <use xlink:href="#money"></use>
-      </svg>
-      记账</router-link>
-    |
-    <router-link to = "/labels">标签</router-link>
-    |
-    <router-link to = "/statistics">统计</router-link>
-  </my-nav>
+  <nav>
+    <router-link to="/money" class="items" active-class="selected">
+      <icon name="money"/>
+      记账
+    </router-link>
+
+    <router-link to="/labels" class="items" active-class="selected">
+      <icon name="label" />
+      标签
+    </router-link>
+
+    <router-link to="/statistics" class="items" active-class="selected">
+      <icon name="chart"/>
+      统计
+    </router-link>
+  </nav>
 </template>
 
-<script lang = "ts">
-//一次性引入icons下的svg文件，这种方式就可以一次引入多个文件
-const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>requireContext.keys().forEach(requireContext);
-try {
-  importAll(require.context('../assets/icons',true,/\.svg$/))
-}catch (error){
-  console.log(error)
-}
-
+<script lang="ts">
 export default {
-name: "MyNav"
+  name: 'Nav'
+};
+
+</script>
+
+<style lang='scss' scoped>
+
+nav {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 3px rgb(0, 0, 0, 0.25);
+  font-size: 12px;
+
+  > .items {
+    width: 33.333%;
+    padding: 2px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .icon{
+      width: 32px;
+      height: 32px;
+    }
+  }
+  > .items.selected{
+    color: red;
+  }
 }
-</script >
-
-<style lang = 'scss' scoped >
-
 
 
 </style>

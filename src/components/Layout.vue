@@ -1,22 +1,20 @@
 <template>
-  <div class="mynav-wrapper">
+  <div class="nav-wrapper">
     <div class="content">
      <slot/>
     </div>
-    <my-nav/>
+    <Nav/>
   </div>
 </template>
 
 <style lang = 'scss' scoped>
-.mynav-wrapper {
-  border: 1px solid green;
+.nav-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
 }
 
 .content {
-  border: 1px solid blue;
   overflow: auto;
   flex-grow: 1; //尽量占取高度，剩下的给导航栏。
 }
