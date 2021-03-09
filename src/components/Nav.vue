@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <div class="nav">
     <router-link to="/money" class="items" active-class="selected">
       <icon name="money"/>
       记账
@@ -14,7 +14,7 @@
       <icon name="chart"/>
       统计
     </router-link>
-  </nav>
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,11 +25,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
-nav {
+@import  "~@/assets/styles/helper.scss";
+.nav {
+  @extend %outerShadow;
   display: flex;
   flex-direction: row;
-  box-shadow: 0 0 3px rgb(0, 0, 0, 0.25);
   font-size: 12px;
 
   > .items {

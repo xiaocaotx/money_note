@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-wrapper">
+  <div class="layout-wrapper">
     <div class="content">
      <slot/>
     </div>
@@ -7,11 +7,17 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  props: ['fixcontent'],
+  name: 'Layout'
+};
+</script>
 <style lang = 'scss' scoped>
-.nav-wrapper {
+.layout-wrapper {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
 }
 
 .content {
