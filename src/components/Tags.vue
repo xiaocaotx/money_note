@@ -5,6 +5,7 @@
       <li>食</li>
       <li>住</li>
       <li>行</li>
+
     </ul>
     <div class="new">
       <button>新增标签</button>
@@ -21,10 +22,14 @@ name: "Tags"
 <style lang = 'scss' scoped>
 @import  "~@/assets/styles/helper.scss";
 .tags{
+  flex-grow: 1;
   font-size: 14px;
   padding: 16px;
+  overflow: auto;
   > .current-tag{
     display: flex;
+    flex-wrap: wrap;
+
     > li{
       background: #d9d9d9;
       $h:24px;
@@ -33,6 +38,7 @@ name: "Tags"
       border-radius: ($h/2);
       padding: 0 16px;
       margin-right: 12px;
+      margin-top: 4px;
     }
   }
   > .new{
