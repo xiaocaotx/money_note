@@ -27,7 +27,7 @@ export default class Notes extends Vue{
 </script >
 
 <style lang = 'scss' scoped>
-@import  "~@/assets/styles/helper.scss";
+@import "~@/assets/styles/helper.scss";
 .notes{
   font-size: 14px;
   background: #f5f5f5;

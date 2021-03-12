@@ -68,7 +68,7 @@ export default class NumberPad extends Vue{
 </script >
 
 <style lang = 'scss' scoped>
-@import  "~@/assets/styles/helper.scss";
+@import "~@/assets/styles/helper.scss";
 .numberPad{
   .output{
     @extend %innerShadow;
