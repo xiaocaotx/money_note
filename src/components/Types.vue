@@ -6,30 +6,27 @@
     </ul></div>
 </template>
 
-<script lang="js">
+<script lang="ts">
+import Vue from 'vue';
+import {Component, Prop} from 'vue-property-decorator';
 
-export default {
-  name: 'Types',
-  props:['xxx'],
-  data(){
-    return {
-      type: "-" //-支出，＋收入
-    }
-  },
-  methods:{
-    selectType(type){
+@Component
+export default class Types extends Vue{
+  type: string | undefined = "-";
+  @Prop(String) readonly defaultType: string | undefined;
+
+  selectType(type: string){
       if(type !== "-" && type !=="+"){
         throw new Error('type is unknown');
       }
       this.type = type;
     }
-
-  },
-  mounted() {
-    console.log(this.xxx);
+  mounted(){
+    this.type =this.defaultType
   }
 
-};
+}
+
 </script>
 
 <style lang='scss' scoped>
