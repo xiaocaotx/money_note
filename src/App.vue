@@ -14,6 +14,7 @@ body{
   font-family: $font-hei;
   font-size: 16px;
   line-height: 1.5;
+  background: #e6e6e6;
 }
 
 </style>

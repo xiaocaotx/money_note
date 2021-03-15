@@ -1,10 +1,10 @@
 <template>
   <div class="tags">
     <ul class="current-tag">
-      <li v-for="tag in dataSource " :key="tag"
+      <li v-for="tag in dataSource " :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)"
-      >{{tag}}
+      >{{tag.name}}
       </li>
     </ul>
     <div class="new">
@@ -19,10 +19,10 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Tags extends Vue{
-  @Prop() readonly dataSource: string[] | undefined;
-  selectedTags: string[] = [];
+  @Prop() readonly dataSource: TagLabel[] | undefined;
+  selectedTags: TagLabel[] = [];
 
-  toggle(tag: string) {
+  toggle(tag: TagLabel) {
     const index = this.selectedTags.indexOf(tag);
     if (index >= 0) {
       this.selectedTags.splice(index, 1);
