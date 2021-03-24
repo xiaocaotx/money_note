@@ -24,7 +24,7 @@ import Notes from '@/components/money/Notes.vue';
 import Button from '@/components/Button.vue';
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator';
-import tagListModel from '@/models/tagListModel';
+import tagStore from '@/models/tagStore';
 
 @Component({
   components: {Button, Notes}
@@ -34,8 +34,8 @@ export default class EditLabel extends Vue{
 
  created(){
    const id = this.$route.params.id;
-   tagListModel.fetch();
-   const tags = tagListModel.data;
+   tagStore.fetchTags();
+   const tags = tagStore.tagList;
    const findtag = tags.filter(t => t.id === id)[0];
    if (findtag) {
      this.tag = findtag;
@@ -45,12 +45,12 @@ export default class EditLabel extends Vue{
  }
   update(name: string) {
     if (this.tag) {
-      tagListModel.update(this.tag.id, name);
+      tagStore.updateTag(this.tag.id, name);
     }
   }
   remove() {
     if (this.tag) {
-      if (tagListModel.remove(this.tag.id)) {
+      if (tagStore.removeTag(this.tag.id)) {
         this.$router.back();
       } else {
         window.alert('删除失败');

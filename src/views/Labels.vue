@@ -21,20 +21,23 @@ import Button from '@/components/Button.vue';
 import Icon from '@/components/Icon.vue';
 import Vue from 'vue'
 import {Component, Watch} from 'vue-property-decorator';
-import tagListModel from '@/models/tagListModel';
+import tagStore from '@/models/tagStore';
 
-const tagList = tagListModel.fetch();
+const tagList = tagStore.fetchTags();
 
 @Component({
   components: { Button,Icon },
 })
 export default class Labels extends Vue{
-  tags = tagListModel.data;
+  tags = tagStore.tagList;
 
   createTag() {
     const name = window.prompt('请输出标签名');
+    if(name===""){
+      return;
+    }
     if (name) {
-      const message = tagListModel.create(name);
+      const message = tagStore.createTag(name);
       if (message === 'duplicated') {
         window.alert('标签名重复了');
       } else if (message === 'success') {

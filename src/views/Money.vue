@@ -7,7 +7,7 @@
         placeholder="请在这里写备注"
         @update:value="onUpdateNotes"
     ></Notes>
-    <Tags :data-source.sync="defaultTags" @update:value="onUpdateTags"></Tags>
+    <Tags @update:value="onUpdateSelectedTag"/>
 
   </layout>
 </template>
@@ -19,12 +19,12 @@ import Types from '@/components/money/Types.vue';
 import NumberPad from '@/components/money/NumberPad.vue';
 import Vue from 'vue';
 import {Component, Watch} from 'vue-property-decorator';
-import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/tagListModel';
+import recordStore from '@/models/recordStore';
+import tagStore from '@/models/tagStore';
 
 
-const recordItems = recordListModel.fetch();
-const tagList = tagListModel.fetch();
+const recordItems = recordStore.fetchRecords();
+const tagList = tagStore.fetchTags();
 
 @Component({
   components: {NumberPad, Types, Notes, Tags},
@@ -37,24 +37,17 @@ export default class Money extends Vue {
     tags: [], notes: '', type: '-', amount: 0
   };
 
-  onUpdateTags(value: string[]) {
+  onUpdateSelectedTag(value: TagLabel[]) {
     this.record.tags = value;
   }
-
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
 
   saveRecord() {
-    const record2: RecordItem = JSON.parse(JSON.stringify(this.record));
-    record2.createdAt = new Date();
-    this.recordList.push(record2);
+   recordStore.createRecord(this.record);
   }
 
-  @Watch('recordList')
-  onRecordListChange() {
-    recordListModel.save(this.recordList);
-  }
 
 }
 </script>
