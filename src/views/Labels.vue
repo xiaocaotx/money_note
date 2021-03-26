@@ -21,14 +21,14 @@ import Button from '@/components/Button.vue';
 import Icon from '@/components/Icon.vue';
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator';
-
+import TagHelper from '@/mixins/TagHelper'
 
 
 
 @Component({
   components: { Button,Icon },
 })
-export default class Labels extends Vue{
+export default class Labels extends TagHelper{
   get tagList (){
     return this.$store.state.tagList;
   }
@@ -36,16 +36,7 @@ export default class Labels extends Vue{
     this.$store.commit("fetchTags");
   }
 
-  createTag() {
-    const name = window.prompt('请输出标签名');
-    if (name === '') {
-      window.alert('标签名不能为空');
-      return;
-    } 
-    if (name) {
-      this.$store.commit("createTag",name);
-    }
-  }
+  
 
 }
 </script >

@@ -14,12 +14,13 @@
 </template>
 
 <script lang = "ts">
+import TagHelper from '@/mixins/TagHelper';
 import Vue from 'vue';
 import {Component,} from 'vue-property-decorator';
 
 
 @Component
-export default class Tags extends Vue{
+export default class Tags extends TagHelper{
   get tagList (){
     console.log(this.$store.state.tagList)
     return this.$store.state.tagList;
@@ -40,18 +41,6 @@ export default class Tags extends Vue{
     this.$emit('update:value', this.selectedTags)
   }
 
-  createTag(){
-    const name = window.prompt('请输入标签名');
-    if (name === '') {
-      window.alert('标签名不能为空');
-      return;
-    } 
-    if(name){
-      this.$store.commit("createTag",name)
-    }
-    
-    
-  }
 }
 </script >
 

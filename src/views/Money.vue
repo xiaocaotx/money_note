@@ -1,7 +1,7 @@
 <template>
   <layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="createRecord"></NumberPad>
-    <Types :default-type.sync="record.type"></Types>
+    <Types :value.sync="record.type"></Types>
     <Notes
         label-name="备注"
         placeholder="请在这里写备注"
@@ -19,6 +19,7 @@ import Types from '@/components/money/Types.vue';
 import NumberPad from '@/components/money/NumberPad.vue';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
+
 
 
 

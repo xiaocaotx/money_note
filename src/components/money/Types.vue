@@ -1,9 +1,11 @@
 <template>
-  <div>
+    <div>
     <ul class="types">
-      <li :class="type ==='-' && 'selected' "  @click="selectType('-')">支出</li>
-      <li :class="type ==='+' && 'selected' "  @click="selectType('+')">收入</li>
-    </ul></div>
+      <li :class="{'selected':value ==='-',[classPrefix+'-item']:classPrefix}"  @click="selectType('-')">支出</li>
+      <li :class="{'selected':value ==='+',[classPrefix+'-item']:classPrefix}"  @click="selectType('+')">收入</li>
+  
+    </ul>
+   </div>
 </template>
 
 <script lang="ts">
@@ -12,25 +14,23 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue{
-  type: string | undefined = "-";
-  @Prop(String) readonly defaultType: string | undefined;
+  @Prop(String) readonly value!: string ;
+  @Prop(String) classPrefix?: string ;
 
-  selectType(type: string){
-      if(type !== "-" && type !=="+"){
+  selectType(typeValue: string){
+      if(typeValue !== "-" && typeValue !=="+"){
         throw new Error('type is unknown');
       }
-      this.type = type;
+      this.$emit('update:value', typeValue);
     }
-  mounted(){
-    this.type =this.defaultType
-  }
+  
 
 }
 
 </script>
 
 <style lang='scss' scoped>
-@import "~@/assets/styles/helper.scss";
+@import "~@/assets/styles/helper.scss";  
 .types{
   background: #c4c4c4;
   display: flex;
