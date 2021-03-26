@@ -2,7 +2,7 @@
     <layout>
       <div class="tags">
         <router-link class="tag"
-            v-for="tag in tags" :key="tag.id"
+            v-for="tag in tagList" :key="tag.id"
              :to="`/labels/edit/${tag.id}`">
           <span>{{tag.name}}</span>
           <Icon name="right"/>
@@ -20,29 +20,30 @@
 import Button from '@/components/Button.vue';
 import Icon from '@/components/Icon.vue';
 import Vue from 'vue'
-import {Component, Watch} from 'vue-property-decorator';
-import tagStore from '@/models/tagStore';
+import {Component} from 'vue-property-decorator';
 
-const tagList = tagStore.fetchTags();
+
+
 
 @Component({
   components: { Button,Icon },
 })
 export default class Labels extends Vue{
-  tags = tagStore.tagList;
+  get tagList (){
+    return this.$store.state.tagList;
+  }
+  beforeCreate(){
+    this.$store.commit("fetchTags");
+  }
 
   createTag() {
     const name = window.prompt('请输出标签名');
-    if(name===""){
+    if (name === '') {
+      window.alert('标签名不能为空');
       return;
-    }
+    } 
     if (name) {
-      const message = tagStore.createTag(name);
-      if (message === 'duplicated') {
-        window.alert('标签名重复了');
-      } else if (message === 'success') {
-        window.alert('添加成功');
-      }
+      this.$store.commit("createTag",name);
     }
   }
 

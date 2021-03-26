@@ -14,14 +14,19 @@
 </template>
 
 <script lang = "ts">
-import createId from '@/lib/createId';
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
-import tagStore from "@/models/tagStore"
+import {Component,} from 'vue-property-decorator';
+
 
 @Component
 export default class Tags extends Vue{
-  tagList = tagStore.fetchTags();
+  get tagList (){
+    console.log(this.$store.state.tagList)
+    return this.$store.state.tagList;
+  }
+  beforeCreate(){
+    this.$store.commit("fetchTags");
+  }
 
   selectedTags: TagLabel[] = [];
 
@@ -36,12 +41,15 @@ export default class Tags extends Vue{
   }
 
   createTag(){
-    const name = window.prompt('请输入标签名') as string;
+    const name = window.prompt('请输入标签名');
     if (name === '') {
       window.alert('标签名不能为空');
       return;
     } 
-    tagStore.createTag(name);
+    if(name){
+      this.$store.commit("createTag",name)
+    }
+    
     
   }
 }

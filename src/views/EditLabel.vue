@@ -24,7 +24,7 @@ import Notes from '@/components/money/Notes.vue';
 import Button from '@/components/Button.vue';
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator';
-import tagStore from '@/models/tagStore';
+
 
 @Component({
   components: {Button, Notes}
@@ -32,11 +32,14 @@ import tagStore from '@/models/tagStore';
 export default class EditLabel extends Vue{
  tag?: TagLabel =undefined;
 
+beforeCreate(){
+  this.$store.commit("fetchTags");
+}
  created(){
    const id = this.$route.params.id;
-   tagStore.fetchTags();
-   const tags = tagStore.tagList;
-   const findtag = tags.filter(t => t.id === id)[0];
+   const tags = this.$store.state.tagList as TagLabel[];
+   const findtag = tags.filter(t => t.id===id)[0];
+
    if (findtag) {
      this.tag = findtag;
    } else {
@@ -45,21 +48,16 @@ export default class EditLabel extends Vue{
  }
   update(name: string) {
     if (this.tag) {
-      tagStore.updateTag(this.tag.id, name);
+      this.$store.commit("updateTag",{"id":this.tag.id,"name":name})
     }
   }
   remove() {
     if (this.tag) {
-      if (tagStore.removeTag(this.tag.id)) {
-        this.$router.back();
-      } else {
-        window.alert('删除失败');
-      }
+      this.$store.commit("removeTag",this.tag.id)
     }
   }
 
   goBack() {
-   console.log("goback进来了")
     this.$router.back();
   }
 }
