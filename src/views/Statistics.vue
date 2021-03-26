@@ -1,7 +1,7 @@
 <template>
 <layout>
-     <Types class-prefix="zzz" :value.sync="type"  />
-      <Tabs class-prefix="zzz3" :dataSource="intervalList" :value.sync="intervel"  />
+     <Types class-prefix="type" :value.sync="type"  />
+      <Tabs class-prefix="inter" :dataSource="intervalList" :value.sync="interval"  />
 </layout>
 
 </template>
@@ -18,7 +18,7 @@ import intervalList from '@/constants/intervalList'
 })
 export default class Statistics extends Vue {
   type = "-";
-  intervel ='day';
+  interval ='day';
   intervalList = intervalList;
 
 
@@ -27,14 +27,20 @@ export default class Statistics extends Vue {
 
 <style lang = 'scss' scoped>
 
-::v-deep .zzz-item{
-background: white;
+::v-deep {
+  .type-item{
+    background: white;
+    &.selected{
+      background: green;
+      &::after{
+        display: none;
+      }
+    }
+  }
 
-&.selected{
-  background: #c4c4c4;
-  &::after{
-    display: none;
+  .inter-tabs-item{
+    max-height: 48px;
   }
 }
-}
+
 </style>

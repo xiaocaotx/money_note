@@ -1,6 +1,6 @@
 <template>
     <div>
-    <ul class="types">
+    <ul class="tabs" :class="{[classPrefix+'-tabs']: classPrefix}">
      <li v-for="item in dataSource" :key="item.value"
      :class="liClass(item)"
      @click="select(item)"
@@ -42,7 +42,7 @@ select(item: DataSourceItem) {
 
 <style lang='scss' scoped>
 @import "~@/assets/styles/helper.scss";  
-.types{
+.tabs{
   background: #c4c4c4;
   display: flex;
   text-align: center;
