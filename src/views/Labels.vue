@@ -11,7 +11,7 @@
       <div class="createTag-wrapper">
         <Button class="createTag"
         @click="createTag"
-        >新建标签</Button>
+        >自定义标签</Button>
       </div>
     </layout>
 </template>
@@ -22,6 +22,7 @@ import Icon from '@/components/Icon.vue';
 import Vue from 'vue'
 import {Component} from 'vue-property-decorator';
 import TagHelper from '@/mixins/TagHelper'
+import createId from '@/lib/createId';
 
 
 
@@ -29,7 +30,21 @@ import TagHelper from '@/mixins/TagHelper'
   components: { Button,Icon },
 })
 export default class Labels extends TagHelper{
+   defaultTagNames =['衣','食','住','行'];
+  defaultTagList: TagLabel[] =[];
+
+  createDefaultTag(){   
+  for (let index = 0; index < this.defaultTagNames.length; index++) {
+    const name = this.defaultTagNames[index];
+    const id = createId().toString();
+    this.defaultTagList.push({id,  name});
+  }
+  return this.defaultTagList;
+  }
   get tagList (){
+     if(this.$store.state.tagList.length ===0){
+      return this.createDefaultTag();
+    }
     return this.$store.state.tagList;
   }
   beforeCreate(){

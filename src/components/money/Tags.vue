@@ -8,12 +8,13 @@
       </li>
     </ul>
     <div class="new">
-      <button @click="createTag">新增标签</button>
+      <button @click="createTag">自定义标签</button>
     </div>
   </div>
 </template>
 
 <script lang = "ts">
+import createId from '@/lib/createId';
 import TagHelper from '@/mixins/TagHelper';
 import Vue from 'vue';
 import {Component,} from 'vue-property-decorator';
@@ -21,12 +22,28 @@ import {Component,} from 'vue-property-decorator';
 
 @Component
 export default class Tags extends TagHelper{
+  defaultTagNames =['衣','食','住','行'];
+  defaultTagList: TagLabel[] =[];
+
+  createDefaultTag(){   
+  for (let index = 0; index < this.defaultTagNames.length; index++) {
+    const name = this.defaultTagNames[index];
+    const id = createId().toString();
+    this.defaultTagList.push({id,  name});
+  }
+  return this.defaultTagList;
+  }
+
+  
   get tagList (){
-    console.log(this.$store.state.tagList)
+    if(this.$store.state.tagList.length ===0){
+      return this.createDefaultTag();
+    }
     return this.$store.state.tagList;
   }
   beforeCreate(){
     this.$store.commit("fetchTags");
+ 
   }
 
   selectedTags: TagLabel[] = [];

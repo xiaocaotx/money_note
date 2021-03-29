@@ -10,7 +10,7 @@ Vue.use(Vuex);//这一句会把store绑到Vue.prototype（Vue产生对象的原�
 
 type RootState = {
   recordList: RecordItem[];
-  tagList: TagLabel[];
+  tagList: [];
   currentTag?: TagLabel;
 
 }
@@ -76,7 +76,7 @@ const store = new Vuex.Store({
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     },
-    
+   
     fetchRecords(state) {
       state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },

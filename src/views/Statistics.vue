@@ -1,11 +1,11 @@
 <template>
 <layout>
-     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
+  <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
     <ol>
       <li v-for="(group, title) in groupedList" :key="title">
        <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
-        <li v-for="item in result" :key="item.id"
+        <li v-for="item in group.items" :key="item.id"
         class="record"
         >
           <span>{{tagString(item.tags)}}</span>
@@ -28,12 +28,12 @@ import {Component} from 'vue-property-decorator'
 import recordTypeList from '@/constants/recordTypeList.ts'
 import dayjs from 'dayjs'
 import clone from '@/lib/clone';
-
+type Result = { title: string; total?: number; items: RecordItem[] }[]
 @Component({
   components: {Tabs},
 })
 export default class Statistics extends Vue {
-  type = "-";
+  type = '-';
   recordTypeList = recordTypeList;
 
   created(){
@@ -41,11 +41,6 @@ export default class Statistics extends Vue {
   }
 
   get recordList(){
-    return this.$store.state.recordList;
-  }
-
-  get result(){
-    console.log(this.$store.state.recordList)
     return this.$store.state.recordList;
   }
 
@@ -73,18 +68,21 @@ export default class Statistics extends Vue {
         return day.format('YYYY年M月D日');
       }
     }
-    
+     
     get groupedList() {
+     
       const {recordList} = this;
       if (recordList.length === 0) {return [];}
-
       const newList = clone(recordList) as RecordItem[];
-      newList .filter((r) => r.type === this.type)
-        .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
-      type Result = { title: string; total?: number; items: RecordItem[] }[]
-      const result: Result = [{title: dayjs(newList[0].createdAt).format('YYYY-MM-DD'), items: [newList[0]]}];
-      for (let i = 1; i < newList.length; i++) {
-        const current = newList[i];
+      const filterList=newList.filter(r => r.type === this.type)
+      if(filterList.length==0){
+        return [];
+      }
+       filterList.sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+     const result: Result = [{title: dayjs(filterList[0].createdAt).format('YYYY-MM-DD'), items: [filterList[0]]}];
+      
+      for (let i = 1; i < filterList.length; i++) {
+        const current = filterList[i];
         const last = result[result.length - 1];
         if (dayjs(last.title).isSame(dayjs(current.createdAt), 'day')) {
           last.items.push(current);
