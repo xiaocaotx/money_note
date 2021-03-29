@@ -43,14 +43,24 @@ export default class Labels extends TagHelper{
   }
   get tagList (){
      if(this.$store.state.tagList.length ===0){
-      return this.createDefaultTag();
+       if(this.defaultTagList.length===0){
+          return this.createDefaultTag();
+       }
+      return this.defaultTagList;
     }
     return this.$store.state.tagList;
   }
   beforeCreate(){
     this.$store.commit("fetchTags");
   }
-
+  createTag(){
+   if(this.$store.state.tagList.length ===0){
+      this.$store.commit("addTags",this.defaultTagList)
+    }
+    const name = window.prompt('请输入标签名');
+    if (!name) { return window.alert('标签名不能为空'); }
+    this.$store.commit('createTag', name);
+ }
   
 
 }

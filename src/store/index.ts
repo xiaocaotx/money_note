@@ -10,7 +10,7 @@ Vue.use(Vuex);//这一句会把store绑到Vue.prototype（Vue产生对象的原�
 
 type RootState = {
   recordList: RecordItem[];
-  tagList: [];
+  tagList: TagLabel[];
   currentTag?: TagLabel;
 
 }
@@ -38,6 +38,10 @@ const store = new Vuex.Store({
           store.commit('saveTags');
         }
       }
+    },
+    addTags(state,newTags: TagLabel[]){
+     state.tagList= state.tagList.concat(newTags);
+     store.commit('saveTags');
     },
     removeTag(state, id: string) {
       let index = -1;
@@ -68,7 +72,8 @@ const store = new Vuex.Store({
         window.alert('标签名重复了');
       }
       const id = createId().toString();
-      state.tagList.push({id, name: name});
+      const tag ={id:id, name:name};
+      state.tagList.push(tag);
       store.commit('saveTags');
       window.alert('添加成功');
     },
