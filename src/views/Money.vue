@@ -1,5 +1,5 @@
 <template>
-  <layout class-prefix="layout">
+  <Layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="createRecord"></NumberPad>
     <Types :value.sync="record.type"></Types>
     <Notes
@@ -17,6 +17,7 @@ import Tags from '@/components/money/Tags.vue';
 import Notes from '@/components/money/Notes.vue';
 import Types from '@/components/money/Types.vue';
 import NumberPad from '@/components/money/NumberPad.vue';
+import Layout from '@/components/money/Layout.vue';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 
@@ -56,8 +57,8 @@ export default class Money extends Vue {
 }
 </script>
 
-<style lang='scss'>
-.layout-content {
+<style lang='scss' scoped >
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
