@@ -78,7 +78,7 @@ export default class Statistics extends Vue {
       if(filterList.length==0){
         return [];
       }
-       filterList.sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+       filterList.sort((a, b) => dayjs(a.createdAt).valueOf() - dayjs(b.createdAt).valueOf());
      const result: Result = [{title: dayjs(filterList[0].createdAt).format('YYYY-MM-DD'), items: [filterList[0]]}];
       
       for (let i = 1; i < filterList.length; i++) {

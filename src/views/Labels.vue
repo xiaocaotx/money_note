@@ -30,7 +30,7 @@ import createId from '@/lib/createId';
   components: { Button,Icon },
 })
 export default class Labels extends TagHelper{
-   defaultTagNames =['衣','食','住','行'];
+  defaultTagNames =['衣','食','住','行'];
   defaultTagList: TagLabel[] =[];
 
   createDefaultTag(){   

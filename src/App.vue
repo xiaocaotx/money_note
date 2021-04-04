@@ -7,6 +7,7 @@
 <style lang="scss">
 @import "~@/assets/styles/helper.scss";
 @import "~@/assets/styles/reset.scss";
+
 body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;//用来设置苹果系统的样式
