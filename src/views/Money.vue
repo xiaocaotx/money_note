@@ -1,16 +1,16 @@
 <template>
   <Layout class-prefix="layout">
     <NumberPad :value.sync="record.amount" @submit="createRecord"></NumberPad>
-   
     <Notes
         label-name="备注"
         placeholder="请在这里写备注"
+        :value="record.notes"
         @update:value="onUpdateNotes"
         @update:date="onUpdateDate"
     ></Notes>
     <Tags @update:value="updateTag"/>
   <Types :value.sync="record.type"></Types>
-  </layout>
+  </Layout>
 </template>
 <script lang="ts">
 import Tags from '@/components/money/Tags.vue';
@@ -21,8 +21,6 @@ import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import dayjs from 'dayjs';
 
-
-
 @Component({
   components: {NumberPad, Types, Notes, Tags},
 })
@@ -32,28 +30,32 @@ export default class Money extends Vue {
     return this.$store.state.recordList;
     }
     record: RecordItem= {
-    tags: [], notes: '', type: '-', amount: 0,createdAt: dayjs().format("YYYY-MM-DD"),
+      tags: [], notes: '', type: '-', amount: 0,
+      createdAt: dayjs().format("YYYY-MM-DD"),
     };
 
-   
     beforeCreate() {
       this.$store.commit('fetchRecords');
     }
  
-  onUpdateNotes(value: string) {
-    this.record.notes = value;
-  }
-  onUpdateDate(date: string) {
-    this.record.createdAt = date;
-  }
+    onUpdateNotes(value: string) {
+      this.record.notes = value;
+    }
+    onUpdateDate(date: string) {
+      this.record.createdAt = date;
+    }
 
-  createRecord() {
-    this.$store.commit("createRecord",this.record)
-
-  }
-  updateTag(value: TagLabel[]){
-    this.record.tags = value;
-  }
+    createRecord() {
+      if(this.record.amount<=0){
+        window.alert('数额有误');
+        return;
+      }
+      this.$store.commit("createRecord",this.record);
+      this.record.notes= "";
+    }
+    updateTag(value: TagLabel[],){
+      this.record.tags = value;
+    }
 
 }
 </script>

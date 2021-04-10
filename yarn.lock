@@ -819,13 +819,6 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@7.x":
-  version "7.13.10"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.10.tgz?cache=0&sync_timestamp=1615243284383&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
-  integrity sha1-R9QqV7YJX0Ro2kQDiP262L6/DX0=
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.11.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.8.4":
   version "7.13.8"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.8.tgz?cache=0&sync_timestamp=1614383319869&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.13.8.tgz#cc886a85c072df1de23670dc1aa59fc116c4017c"
@@ -1096,11 +1089,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
-
-"@popperjs/core@^2.5.4":
-  version "2.9.2"
-  resolved "https://registry.npm.taobao.org/@popperjs/core/download/@popperjs/core-2.9.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40popperjs%2Fcore%2Fdownload%2F%40popperjs%2Fcore-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
-  integrity sha1-rep7aVPLs0ZRdmsFSEaOdDxqI1M=
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.1"
@@ -1447,19 +1435,7 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@vant/icons@1.5.2":
-  version "1.5.2"
-  resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.5.2.tgz?cache=0&sync_timestamp=1613997305954&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.5.2.tgz#3f3ea353a0eacd38c113757bd31836489facb10b"
-  integrity sha1-Pz6jU6DqzTjBE3V70xg2SJ+ssQs=
-
-"@vant/popperjs@^1.0.0":
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/@vant/popperjs/download/@vant/popperjs-1.0.4.tgz#49c20809a3828e7b036e23d50fb56121e997618f"
-  integrity sha1-ScIICaOCjnsDbiPVD7VhIemXYY8=
-  dependencies:
-    "@popperjs/core" "^2.5.4"
-
-"@vue/babel-helper-vue-jsx-merge-props@^1.0.0", "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
+"@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
   resolved "https://registry.npm.taobao.org/@vue/babel-helper-vue-jsx-merge-props/download/@vue/babel-helper-vue-jsx-merge-props-1.2.1.tgz#31624a7a505fb14da1d58023725a4c5f270e6a81"
   integrity sha1-MWJKelBfsU2h1YAjclpMXycOaoE=
@@ -4156,6 +4132,14 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+echarts@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npm.taobao.org/echarts/download/echarts-5.0.2.tgz#1726d17a57cf05d62cd0567b4325e1201a56baf6"
+  integrity sha1-FybRelfPBdYs0FZ7QyXhIBpWuvY=
+  dependencies:
+    tslib "2.0.3"
+    zrender "5.0.4"
 
 editorconfig@^0.15.3:
   version "0.15.3"
@@ -7069,7 +7053,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.3, lodash@^4.17.4:
+lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.3, lodash@^4.17.4:
   version "4.17.21"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz?cache=0&sync_timestamp=1613835817439&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
@@ -10425,6 +10409,11 @@ tsconfig@^7.0.0:
     strip-bom "^3.0.0"
     strip-json-comments "^2.0.0"
 
+tslib@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npm.taobao.org/tslib/download/tslib-2.0.3.tgz?cache=0&sync_timestamp=1617647331485&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
+
 tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1609887446826&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -10753,17 +10742,6 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@^2.12.11:
-  version "2.12.11"
-  resolved "https://registry.npm.taobao.org/vant/download/vant-2.12.11.tgz?cache=0&sync_timestamp=1617070186940&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvant%2Fdownload%2Fvant-2.12.11.tgz#abf23f6b6246c8b4f49502e409cae64fd99ed5bc"
-  integrity sha1-q/I/a2JGyLT0lQLkCcrmT9me1bw=
-  dependencies:
-    "@babel/runtime" "7.x"
-    "@vant/icons" "1.5.2"
-    "@vant/popperjs" "^1.0.0"
-    "@vue/babel-helper-vue-jsx-merge-props" "^1.0.0"
-    vue-lazyload "1.2.3"
-
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -10826,11 +10804,6 @@ vue-jest@^3.0.5:
     source-map "^0.5.6"
     tsconfig "^7.0.0"
     vue-template-es2015-compiler "^1.6.0"
-
-vue-lazyload@1.2.3:
-  version "1.2.3"
-  resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz?cache=0&sync_timestamp=1613791646802&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-lazyload%2Fdownload%2Fvue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
-  integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
 
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.1.2"
@@ -11477,3 +11450,10 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+zrender@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.npm.taobao.org/zrender/download/zrender-5.0.4.tgz?cache=0&sync_timestamp=1612184108108&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fzrender%2Fdownload%2Fzrender-5.0.4.tgz#89c355af908b9f64a301b38f751b7951f2c8a95a"
+  integrity sha1-icNVr5CLn2SjAbOPdRt5UfLIqVo=
+  dependencies:
+    tslib "2.0.3"

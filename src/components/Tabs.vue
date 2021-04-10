@@ -49,7 +49,7 @@ select(item: DataSourceItem) {
   font-size: 24px;
   > li{
     width: 50%;
-    height: 64px;
+    height: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
