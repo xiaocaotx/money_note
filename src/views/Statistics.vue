@@ -28,9 +28,9 @@
 import Tabs from '@/components/Tabs.vue';
 import Chart from '@/components/Chart.vue';
 import Vue from "vue";
-import {Component} from 'vue-property-decorator'
-import recordTypeList from '@/constants/recordTypeList.ts'
-import dayjs from 'dayjs'
+import {Component} from 'vue-property-decorator';
+import recordTypeList from '@/constants/recordTypeList.ts';
+import dayjs from 'dayjs';
 import clone from '@/lib/clone';
 const  lodash = require('lodash');
 
